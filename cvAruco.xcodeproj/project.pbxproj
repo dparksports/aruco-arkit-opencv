@@ -17,9 +17,8 @@
 		CA1A9DAF2249D77900EDE121 /* ArucoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9DAE2249D77900EDE121 /* ArucoConstants.swift */; };
 		CA1A9DB12249DA0400EDE121 /* ArucoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9DB02249DA0400EDE121 /* ArucoNode.swift */; };
 		CA1A9DB32249DA1800EDE121 /* UIColor+HSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9DB22249DA1800EDE121 /* UIColor+HSV.swift */; };
-		CA9A40BC224ACE5A0065D169 /* ArucoCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = CA9A40B9224AB09F0065D169 /* ArucoCV.mm */; };
-		CA9A40BE224AD0510065D169 /* opencv in Resources */ = {isa = PBXBuildFile; fileRef = CA9A40BD224AD0510065D169 /* opencv */; };
-		CA9A40C1224AD0890065D169 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9A40C0224AD0890065D169 /* opencv2.framework */; };
+		CA2273D9224AD7F7009884EC /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2273D8224AD7F7009884EC /* opencv2.framework */; };
+		CAB6B8AD224AD850005F49FD /* ArucoCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = CAB6B8AC224AD850005F49FD /* ArucoCV.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +36,10 @@
 		CA1A9DAE2249D77900EDE121 /* ArucoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArucoConstants.swift; sourceTree = "<group>"; };
 		CA1A9DB02249DA0400EDE121 /* ArucoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArucoNode.swift; sourceTree = "<group>"; };
 		CA1A9DB22249DA1800EDE121 /* UIColor+HSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HSV.swift"; sourceTree = "<group>"; };
+		CA2273D8224AD7F7009884EC /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = opencv/opencv2.framework; sourceTree = "<group>"; };
 		CA9A40B8224AB09F0065D169 /* ArucoCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArucoCV.h; sourceTree = "<group>"; };
-		CA9A40B9224AB09F0065D169 /* ArucoCV.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ArucoCV.mm; sourceTree = "<group>"; };
-		CA9A40BD224AD0510065D169 /* opencv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = opencv; sourceTree = "<group>"; };
 		CA9A40C0224AD0890065D169 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = cvAruco/opencv/opencv2.framework; sourceTree = "<group>"; };
+		CAB6B8AC224AD850005F49FD /* ArucoCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArucoCV.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9A40C1224AD0890065D169 /* opencv2.framework in Frameworks */,
+				CA2273D9224AD7F7009884EC /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +74,9 @@
 		CA1A9D8F2249D1B300EDE121 /* cvAruco */ = {
 			isa = PBXGroup;
 			children = (
-				CA9A40BD224AD0510065D169 /* opencv */,
+				CA2273D8224AD7F7009884EC /* opencv2.framework */,
 				CA9A40B8224AB09F0065D169 /* ArucoCV.h */,
-				CA9A40B9224AB09F0065D169 /* ArucoCV.mm */,
+				CAB6B8AC224AD850005F49FD /* ArucoCV.mm */,
 				CA1A9DB22249DA1800EDE121 /* UIColor+HSV.swift */,
 				CA1A9DAB2249D65F00EDE121 /* SKWorldTransform.h */,
 				CA1A9DAC2249D65F00EDE121 /* SKWorldTransform.m */,
@@ -162,7 +161,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9A40BE224AD0510065D169 /* opencv in Resources */,
 				CA1A9D932249D1B300EDE121 /* art.scnassets in Resources */,
 				CA1A9D9D2249D1B300EDE121 /* LaunchScreen.storyboard in Resources */,
 				CA1A9D9A2249D1B300EDE121 /* Assets.xcassets in Resources */,
@@ -178,10 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1A9D952249D1B300EDE121 /* ViewController.swift in Sources */,
+				CAB6B8AD224AD850005F49FD /* ArucoCV.mm in Sources */,
 				CA1A9DB12249DA0400EDE121 /* ArucoNode.swift in Sources */,
 				CA1A9DAF2249D77900EDE121 /* ArucoConstants.swift in Sources */,
 				CA1A9D912249D1B300EDE121 /* AppDelegate.swift in Sources */,
-				CA9A40BC224ACE5A0065D169 /* ArucoCV.mm in Sources */,
 				CA1A9DAD2249D65F00EDE121 /* SKWorldTransform.m in Sources */,
 				CA1A9DB32249DA1800EDE121 /* UIColor+HSV.swift in Sources */,
 			);
@@ -337,6 +335,7 @@
 					"$(PROJECT_DIR)/cvAruco/opencv",
 				);
 				INFOPLIST_FILE = cvAruco/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +361,7 @@
 					"$(PROJECT_DIR)/cvAruco/opencv",
 				);
 				INFOPLIST_FILE = cvAruco/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

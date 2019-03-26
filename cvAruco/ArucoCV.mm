@@ -28,25 +28,21 @@ static cv::Mat rotateRodriques(cv::Mat &rotMat, cv::Vec3d &tvecs) {
     
     for( int row = 0; row < rotMat.rows; row++) {
         for (int col = 0; col < rotMat.cols; col++) {
-            extrinsics.at<double>(row,col) = rotMat.at<double>(row,col); //copy rotation matrix values
+            extrinsics.at<double>(row,col) = rotMat.at<double>(row,col);
         }
         extrinsics.at<double>(row,3) = tvecs[row];
     }
     extrinsics.at<double>(3,3) = 1;
-    
-    //The important thing to remember about the extrinsic matrix is that it describes how the world is transformed relative to the camera. This is often counter-intuitive, because we usually want to specify how the camera is transformed relative to the world.
-    
-    // Convert coordinate systems of opencv to openGL (SceneKit)
+
+    // Convert Opencv coords to OpenGL coords
     extrinsics = [ArucoCV GetCVToGLMat] * extrinsics;
     return extrinsics;
 }
 
 static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<int> &ids, CVPixelBufferRef pixelBuffer) {
     cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-    
-    // The first plane / channel (at index 0) is the grayscale plane
-    // See more infomation about the YUV format
-    // http://en.wikipedia.org/wiki/YUV
+
+    // grey scale channel at 0
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
     void *baseaddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
     CGFloat width = CVPixelBufferGetWidth(pixelBuffer);
@@ -63,7 +59,6 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     std::vector<int> ids;
     std::vector<std::vector<cv::Point2f>> corners;
     detect(corners, ids, pixelBuffer);
-    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     
     NSMutableArray *arrayMatrix = [NSMutableArray new];
     if(ids.size() == 0) {
@@ -89,7 +84,6 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     
     cv::Mat rotMat, tranMat;
     for (int i = 0; i < rvecs.size(); i++) {
-        //convert results rotation matrix
         cv::Rodrigues(rvecs[i], rotMat);
         cv::Mat extrinsics = rotateRodriques(rotMat, tvecs[i]);
         SCNMatrix4 scnMatrix = [ArucoCV transformToSceneKitMatrix:extrinsics];
@@ -102,11 +96,6 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     return arrayMatrix;
 }
 
-//http://answers.opencv.org/question/23089/opencv-opengl-proper-camera-pose-using-solvepnp/
-
-
-// Note that in openCV z goes away the camera (in openGL goes into the camera)
-// and y points down and on openGL point up
 +(cv::Mat) GetCVToGLMat {
     cv::Mat cvToGL = cv::Mat::zeros(4,4,CV_64F);
     cvToGL.at<double>(0,0) = 1.0f;
@@ -117,13 +106,10 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
 }
 
 +(SCNMatrix4) transformToSceneKitMatrix:(cv::Mat&) openCVTransformation {
-    SCNMatrix4 mat = SCNMatrix4Identity;
     
-    //Transpose (think this is to switch from col order to row order matrix)
+    SCNMatrix4 mat = SCNMatrix4Identity;
     openCVTransformation = openCVTransformation.t();
     
-    //copy rotation rows
-    // copy the rotationRows
     mat.m11 = (float) openCVTransformation.at<double>(0, 0);
     mat.m12 = (float) openCVTransformation.at<double>(0, 1);
     mat.m13 = (float) openCVTransformation.at<double>(0, 2);
@@ -139,7 +125,6 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     mat.m33 = (float)openCVTransformation.at<double>(2, 2);
     mat.m34 = (float)openCVTransformation.at<double>(2, 3);
     
-    //copy the translation row
     mat.m41 = (float)openCVTransformation.at<double>(3, 0);
     mat.m42 = (float)openCVTransformation.at<double>(3, 1);
     mat.m43 = (float)openCVTransformation.at<double>(3, 2);

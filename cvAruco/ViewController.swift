@@ -124,7 +124,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         
         // 1) cv::aruco::detectMarkers
         // 2) cv::aruco::estimatePoseSingleMarkers
-        // 3) transform offset and rotation of marker's corners to OpenGL coords to SK coords
+        // 3) transform offset and rotation of marker's corners to OpenGL coords
         // 4) return them as an array of matrixes
 
         let transMatrixArray:Array<SKWorldTransform> = ArucoCV.estimatePose(pixelBuffer, withIntrinsics: frame.camera.intrinsics, andMarkerSize: Float64(ArucoProperty.ArucoMarkerSize)) as! Array<SKWorldTransform>;
