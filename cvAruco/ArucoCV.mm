@@ -40,7 +40,7 @@ static cv::Mat rotateRodriques(cv::Mat &rotMat, cv::Vec3d &tvecs) {
 }
 
 static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<int> &ids, CVPixelBufferRef pixelBuffer) {
-    cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+    cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_5X5_250);
 
     // grey scale channel at 0
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
@@ -81,7 +81,8 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     cv::aruco::estimatePoseSingleMarkers(corners, markerSize, intrinMat, distCoeffs, rvecs, tvecs);
     NSLog(@"found: tvecs.size(): %lu", tvecs.size());
     NSLog(@"found: rvecs.size(): %lu", rvecs.size());
-    
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+
     cv::Mat rotMat, tranMat;
     for (int i = 0; i < rvecs.size(); i++) {
         cv::Rodrigues(rvecs[i], rotMat);
@@ -93,6 +94,7 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
         [arrayMatrix addObject:transform];
     }
     
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     return arrayMatrix;
 }
 
