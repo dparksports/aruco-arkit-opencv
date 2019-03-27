@@ -60,7 +60,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
             let arucoCube = ArucoNode(arucoId: Int(transform.arucoId))
             sceneView.scene.rootNode.addChildNode(arucoCube);
             
-            arucoCube.eulerAngles.x = .pi / 2
+//            arucoCube.eulerAngles.x = .pi / 2
             let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
             arucoCube.setWorldTransform(targTransform);
         }
@@ -71,7 +71,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         for transform in targTransforms {
             
             if let box = findCube(arucoId: Int(transform.arucoId)) {
-                box.eulerAngles.x = .pi / 2
+//                box.eulerAngles.x = .pi / 2
                 
                 let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
                 box.setWorldTransform(targTransform);
@@ -79,7 +79,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
                 let arucoCube = ArucoNode(arucoId: Int(transform.arucoId))
                 sceneView.scene.rootNode.addChildNode(arucoCube);
                 
-                arucoCube.eulerAngles.x = .pi / 2
+//                arucoCube.eulerAngles.x = .pi / 2
                 let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
                 arucoCube.setWorldTransform(targTransform);
             }
@@ -139,7 +139,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         let cameraMatrix = SCNMatrix4.init(frame.camera.transform);
         
         DispatchQueue.main.async(execute: {
-            self.updateContentNode(targTransforms: transMatrixArray, cameraTransform:cameraMatrix)
+            self.updateContentNodeCache(targTransforms: transMatrixArray, cameraTransform:cameraMatrix)
             
             self.inProcessing = false;
 //            NSLog("inProcessing:%d", self.inProcessing);
