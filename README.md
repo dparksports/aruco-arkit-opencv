@@ -21,7 +21,7 @@ This demo has so far worked on a iphone 6.  -- I have not tested on any other de
 
 Under low light condition, the pose estimation seems to be off. 
 
-Under low texture condition, the ARKit doesn't pick up any features or low sparse features in the live view.
+Under low texture condition, the ARKit may not pick up low count of features.
 
 
 ## Comming Soon
