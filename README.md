@@ -1,5 +1,5 @@
 # aruco-arkit-opencv
-Detects Aruco markers (6x6) in a live view.  Uses OpenCV, ARKit, Aruco libraries
+Detects aruco markers (6x6) in a live view.  Uses OpenCV, ARKit, Aruco libraries
 
 
 ## Getting Started
