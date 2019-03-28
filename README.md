@@ -21,7 +21,8 @@ Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 - Use this website to generate a new marker.  
 - http://chev.me/arucogen/
 - Select 5x5 Dictionary with Marker size 250.
-- Enter any Marker ID.  eg) 77
+- Enter any Marker ID.  
+- eg) 77
 
 6. Point your camera at a printed marker.
 
