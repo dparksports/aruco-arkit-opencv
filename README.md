@@ -17,27 +17,17 @@ Detects aruco markers (6x6) in a live view.  Uses OpenCV, ARKit, Aruco libraries
 
 ## Known Issues & Improvements
 
-This demo has so far worked on a iphone 6.  -- I have not tested on any other devices. 
+This demo has so far worked on a iphone 6.  
 
 Under low light condition, the pose estimation seems to be off. 
 
 Under low texture condition, the ARKit may not pick up low count of features.
 
+Under 50Hz light source, there seems flicker issue.
+
 
 ## Comming Soon
 
-Unity demo coming soon.
+Native Unity Plugin demo coming soon.
 
-
-## Aknowledgements
-
-I found the following sources particularly helpful in getting this demo working.
-
-http://ksimek.github.io/2012/08/14/decompose/
-
-https://docs.opencv.org/3.1.0/d5/dae/tutorial_aruco_detection.html
-
-http://answers.opencv.org/question/23089/opencv-opengl-proper-camera-pose-using-solvepnp/
-
-https://stackoverflow.com/questions/44257592/scenekit-3d-marker-augmented-reality-ios
 
