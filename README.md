@@ -1,10 +1,10 @@
 # aruco-arkit-opencv
 This iOS app detects Aruco markers in a live view.  
 - Uses OpenCV library
+- Uses OpenCV Contri library
+- Aruco library
 - ARKit 
 - SceneKit 
-- Aruco library
-- Uses OpenCV Contri library
 
 ## Video Demo
 - Shows how the app handles a camera shake or shaking of a printed aruco marker. 
