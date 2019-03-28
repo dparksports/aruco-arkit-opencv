@@ -40,7 +40,7 @@ Under low light condition, the pose estimation seems to be off.
 - Not the Demo room where they have 50Hz light.  
 - For some reasons, this causes flickering issue on this app.
 
-Under low texture condition, the ARKit may not pick up low count of features.
+Under low texture condition, the ARKit may pick up no count or low count of features.
 
 Under 50Hz light source, it has the flickering cube issue.
 
