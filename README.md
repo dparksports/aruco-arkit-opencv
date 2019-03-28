@@ -61,6 +61,5 @@ Under 50Hz light source, it has the flickering cube issue.
 
 ## Comming Soon
 
-Native Unity Plugin demo coming soon.
-
+Native Unity Plugin demo may be in order, if given a paid offer to work on it.
 
