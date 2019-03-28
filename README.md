@@ -33,7 +33,7 @@ Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 7. Once sucessfully a marker pose is estimated, you should see a solid-colored cube placed over the marker. 
 
 8. Add additional markers in the scene.  
-- Each marker should be placed with a unique colored cube.
+- Each marker should be placed with a uniquely colored cube.
 
 
 ## Known Issues & Improvements
