@@ -78,11 +78,8 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     std::vector<cv::Vec3d> rvecs, tvecs;
     cv::Mat distCoeffs = cv::Mat::zeros(8, 1, CV_64F);
     cv::aruco::estimatePoseSingleMarkers(corners, markerSize, intrinMat, distCoeffs, rvecs, tvecs);
-    NSLog(@"found: tvecs.size(): %lu", tvecs.size());
     NSLog(@"found: rvecs.size(): %lu", rvecs.size());
-    NSLog(@"found: ids.size(): %lu", ids.size());
     
-//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 
     cv::Mat rotMat, tranMat;
     for (int i = 0; i < rvecs.size(); i++) {
@@ -95,7 +92,6 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
         [arrayMatrix addObject:transform];
     }
     
-//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     return arrayMatrix;
 }
 
