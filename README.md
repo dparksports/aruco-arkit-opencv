@@ -1,5 +1,8 @@
 # aruco-arkit-opencv
 This iOS app detects Aruco markers in a live view.  
+
+This app uses OpenCV and Aruco libraries.  Namely,
+
 - Uses OpenCV library
 - Uses OpenCV Contri library
 - Aruco library
