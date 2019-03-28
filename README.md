@@ -18,7 +18,8 @@ Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 4. Launch app and scan the area until the app shows the feature points in a live view.
 
 5. Generate an aruco marker.
-- Use this website to generate a new marker.  http://chev.me/arucogen/
+- Use this website to generate a new marker.  
+- http://chev.me/arucogen/
 - Select 5x5 Dictionary with Marker size 250.
 - Enter any Marker ID.  eg) 77
 
@@ -35,7 +36,9 @@ Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 This demo has so far worked on a iphone 6.  
 
 Under low light condition, the pose estimation seems to be off. 
---- Find a well lit area like 1st Floor Kitchen Area.. Not the Demo room where they have 50Hz light.  For some reasons, this causes flickering issue on this app.
+- Find a well lit area like 1st Floor Kitchen Area.. 
+- Not the Demo room where they have 50Hz light.  
+- For some reasons, this causes flickering issue on this app.
 
 Under low texture condition, the ARKit may not pick up low count of features.
 
