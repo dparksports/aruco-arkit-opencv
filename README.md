@@ -49,12 +49,12 @@ This app uses OpenCV and Aruco libraries.  Namely,
 
 This demo has so far worked on a iphone 6.  
 
-Under low light condition, the pose estimation seems to be off. 
+Under low light environment, the pose estimation seems to be off. 
 - Find a well lit area like 1st Floor Kitchen Area.. 
 - Not the Demo room where they have 50Hz light.  
 - For some reasons, this causes flickering issue on this app.
 
-Under low texture condition, the ARKit may not pick up any features, or pick up a low count of features.
+Under low texture environment, the ARKit may not pick up any features, or pick up a low count of features.
 
 Under 50Hz light source, it has the flickering cube issue.
 
