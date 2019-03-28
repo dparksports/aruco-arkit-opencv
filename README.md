@@ -42,7 +42,7 @@ Under low light condition, the pose estimation seems to be off.
 
 Under low texture condition, the ARKit may not pick up low count of features.
 
-Under 50Hz light source, there seems flicker issue.
+Under 50Hz light source, it has the flickering cube issue.
 
 
 ## Comming Soon
