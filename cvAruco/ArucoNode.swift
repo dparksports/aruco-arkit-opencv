@@ -14,7 +14,7 @@ class ArucoNode : SCNNode {
     public let id:Int;
 
     init(sz:CGFloat = 0.04, arucoId:Int = 23) {
-        self.size = sz;
+        self.size = ArucoProperty.ArucoMarkerSize;
         self.id = arucoId;
         
         super.init();

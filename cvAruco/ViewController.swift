@@ -13,7 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, ARSessionObserver {
 
     @IBOutlet var sceneView: ARSCNView!
-    var inProcessing = false;
+    var mutexlock = false;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-//
-//        // Set the scene to the view
-//        sceneView.scene = scene
         sceneView.delegate = self
         sceneView.session.delegate = self
     }
@@ -50,37 +46,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         sceneView.session.pause()
     }
     
-    func updateContentNode(targTransforms: Array<SKWorldTransform>, cameraTransform:SCNMatrix4) {
-        
-        for node in sceneView.scene.rootNode.childNodes {
-            node.removeFromParentNode()
-        }
-        
-        for transform in targTransforms {
-            let arucoCube = ArucoNode(arucoId: Int(transform.arucoId))
-            sceneView.scene.rootNode.addChildNode(arucoCube);
-            
-//            arucoCube.eulerAngles.x = .pi / 2
-            let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
-            arucoCube.setWorldTransform(targTransform);
-        }
-    }
-    
     func updateContentNodeCache(targTransforms: Array<SKWorldTransform>, cameraTransform:SCNMatrix4) {
         
         for transform in targTransforms {
             
+            let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
+            
             if let box = findCube(arucoId: Int(transform.arucoId)) {
-//                box.eulerAngles.x = .pi / 2
-                
-                let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
                 box.setWorldTransform(targTransform);
+                
             } else {
+                
                 let arucoCube = ArucoNode(arucoId: Int(transform.arucoId))
                 sceneView.scene.rootNode.addChildNode(arucoCube);
-                
-//                arucoCube.eulerAngles.x = .pi / 2
-                let targTransform = SCNMatrix4Mult(transform.transform, cameraTransform);
                 arucoCube.setWorldTransform(targTransform);
             }
         }
@@ -98,41 +76,27 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         return nil
     }
     
-    func resetTracking() {
-        for node in sceneView.scene.rootNode.childNodes {
-            node.removeFromParentNode()
-        }
-
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-    }
-    
     // MARK: - ARSessionDelegate
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         
-        if self.inProcessing {
-//            NSLog("inProcessing:%d", self.inProcessing);
+        if self.mutexlock {
             return;
         }
 
-//        NSLog("inProcessing:%d", self.inProcessing);
-        self.inProcessing = true;
-//        NSLog("inProcessing:%d", self.inProcessing);
+        self.mutexlock = true;
         let pixelBuffer = frame.capturedImage
         
         // 1) cv::aruco::detectMarkers
         // 2) cv::aruco::estimatePoseSingleMarkers
-        // 3) transform offset and rotation of marker's corners to OpenGL coords
+        // 3) transform offset and rotation of marker's corners in OpenGL coords
         // 4) return them as an array of matrixes
 
         let transMatrixArray:Array<SKWorldTransform> = ArucoCV.estimatePose(pixelBuffer, withIntrinsics: frame.camera.intrinsics, andMarkerSize: Float64(ArucoProperty.ArucoMarkerSize)) as! Array<SKWorldTransform>;
 
         
         if(transMatrixArray.count == 0) {
-            self.inProcessing = false;
-//            NSLog("inProcessing:%d", self.inProcessing);
+            self.mutexlock = false;
             return;
         }
 
@@ -141,8 +105,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
         DispatchQueue.main.async(execute: {
             self.updateContentNodeCache(targTransforms: transMatrixArray, cameraTransform:cameraMatrix)
             
-            self.inProcessing = false;
-//            NSLog("inProcessing:%d", self.inProcessing);
+            self.mutexlock = false;
         })
     }
     
@@ -174,7 +137,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        resetTracking()
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
@@ -183,6 +145,5 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, AR
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        resetTracking()
     }
 }

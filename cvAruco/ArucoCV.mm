@@ -50,8 +50,7 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     cv::Mat mat(height, width, CV_8UC1, baseaddress, 0); //CV_8UC1
     
     cv::aruco::detectMarkers(mat,dictionary,corners,ids);
-    
-    NSLog(@"found: ids.size(): %lu", ids.size());
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 }
 
 +(NSMutableArray *) estimatePose:(CVPixelBufferRef)pixelBuffer withIntrinsics:(matrix_float3x3)intrinsics andMarkerSize:(Float64)markerSize {
@@ -81,7 +80,9 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
     cv::aruco::estimatePoseSingleMarkers(corners, markerSize, intrinMat, distCoeffs, rvecs, tvecs);
     NSLog(@"found: tvecs.size(): %lu", tvecs.size());
     NSLog(@"found: rvecs.size(): %lu", rvecs.size());
-    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    NSLog(@"found: ids.size(): %lu", ids.size());
+    
+//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 
     cv::Mat rotMat, tranMat;
     for (int i = 0; i < rvecs.size(); i++) {
@@ -94,7 +95,7 @@ static void detect(std::vector<std::vector<cv::Point2f> > &corners, std::vector<
         [arrayMatrix addObject:transform];
     }
     
-    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     return arrayMatrix;
 }
 
