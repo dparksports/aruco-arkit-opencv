@@ -17,11 +17,15 @@ This app uses OpenCV and Aruco libraries.  Namely,
 
 ## Getting Started
 
-1. Download my OpenCV and Aruco library from here.
+1. Download this iOS OpenCV and Aruco library from here.
 - https://drive.google.com/open?id=1_G_kzhMLsKyzFKKxz1FSSCNzdobjI7b-
 
-- This iOS library of OpenCV with OpenCV Contri Aruco module is built from scratch from source.
-- Building it from scratch is not an easy task.  I will write a blog entry on how.
+- This iOS library is built from the OpenCV and OpenCV Contrib code base.
+- Building OpenCV Contrib and OpenCV from source is not an easy task.
+- Using this prebuilt library will save you time and effort.
+- Version: OpenCV v3.4.x for OpenCV and OpenCV Contrib libraries.
+- I will write a blog entry on how to build the OpenCV and OpenCV Contrib libraries from source on a Mac.
+
 
 2. Place "opencv2.framework" under "opencv" directory under the Xcode project.
 - eg) ../aruco-master/cvAruco/opencv
