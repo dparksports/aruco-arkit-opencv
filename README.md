@@ -1,11 +1,13 @@
 # aruco-arkit-opencv
-Detects aruco markers (6x6) in a live view.  Uses OpenCV, ARKit, Aruco libraries
+Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 
 
 ## Getting Started
 
 1. Download my OpenCV and Aruco library from here.
 https://drive.google.com/open?id=1_G_kzhMLsKyzFKKxz1FSSCNzdobjI7b-
+-- This iOS library of OpenCV with OpenCV Contri Aruco module is built from scratch from source.
+-- Building it from scratch is not an easy task.  I will write a blog entry on how.
 
 2. Place "opencv2.framework" under "opencv" directory under the Xcode project.
 eg) ../aruco-master/cvAruco/opencv
