@@ -2,7 +2,8 @@
 Detects aruco markers in a live view.  Uses OpenCV, ARKit, Aruco libraries
 
 ## Video Demo
-- Shows how the app handles a camera shake or shaking of a printed aruco marker.
+- Shows how the app handles a camera shake or shaking of a printed aruco marker. 
+- Video is captured in the brightly lit MagicLeap 1st floor kitchen.
 - Link: https://drive.google.com/file/d/1Zi-Qulc-XPzMS8fRPiBhlgZrAuzvW1IF/view?usp=sharing
 
 
