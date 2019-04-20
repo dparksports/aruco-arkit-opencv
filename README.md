@@ -53,7 +53,7 @@ This app uses OpenCV and Aruco libraries.  Namely,
 
 ## Known Issues & Improvements
 
-This demo has so far worked on a iphone 6.  
+This demo works on a iPhone 6s and above.
 
 Under low light environment, the pose estimation seems to be off. 
 - Find a well lit area like 1st floor kitchen area.. 
@@ -67,4 +67,4 @@ Under 50Hz light source, it has the flickering cube issue.
 
 ## Comming Soon
 
-Native Unity Plugin demo may be in order, if find enough time..
+Native Unity Plugin version may be in order, if find enough time..
