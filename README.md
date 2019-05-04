@@ -12,7 +12,7 @@ This app uses OpenCV and Aruco libraries.  Namely,
 ## Video Demo
 - Shows how the app handles a camera shake or shaking of a printed aruco marker. 
 - Video is captured in the brightly lit MagicLeap 1st floor kitchen.
-- Link: https://drive.google.com/file/d/1Zi-Qulc-XPzMS8fRPiBhlgZrAuzvW1IF/view?usp=sharing
+- Link: https://www.youtube.com/watch?v=oMhDwKN-45U
 
 
 ## Getting Started
