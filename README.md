@@ -25,7 +25,7 @@ This app uses OpenCV and Aruco libraries.  Namely,
 - The OpenCV Contrib libraries include Aruco library required for this iOS app.
 - The downloadable OpenCV library is built from the OpenCV and OpenCV Contrib code base.
 - Using this prebuilt library will save you time and effort, as building OpenCV Contrib and OpenCV from source is not an easy task.
-- Code base is base on the version: OpenCV v3.4.x for OpenCV and OpenCV Contrib libraries.
+- Code base is base on the version: OpenCV v4.2.x for OpenCV and OpenCV Contrib libraries.
 - I will write a blog entry on how to build the OpenCV and OpenCV Contrib libraries from source on a Mac.
 
 
