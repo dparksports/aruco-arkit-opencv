@@ -18,7 +18,7 @@ This app uses OpenCV and Aruco libraries.  Namely,
 ## Getting Started
 
 1. Download the iOS OpenCV and Aruco library from here.
-- https://drive.google.com/open?id=1psr5xjq1yfxOTm0Pl3p1yXU5p7epIy35
+- https://drive.google.com/file/d/1SpEmjRedHKq4XxWXAXiLv8alnKq1cuJ7/view?usp=sharing
 
 - This iOS library is different from the iOS version of the OpenCV library provided by OpenCV.org.
 - The standard OpenCV library only has its core library, and it does not contain OpenCV Contrib libraries.
