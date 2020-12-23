@@ -43,6 +43,11 @@ This app uses OpenCV and Aruco libraries.  Namely,
 - Enter any Marker ID.  
 - eg) 77
 
+Aruco Market 77 | Aruco Marker 55
+------------ | -------------
+![cell 1](https://github.com/dparksports/aruco-arkit-opencv/blob/master/5x5_1000-77.svg) | ![cell 2](https://github.com/dparksports/aruco-arkit-opencv/blob/master/5x5_1000-55.svg)
+
+
 6. Point your camera at a printed marker.
 
 7. Once sucessfully a marker pose is estimated, you should see a solid-colored cube placed over the marker. 
