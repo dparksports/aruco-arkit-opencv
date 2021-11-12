@@ -70,6 +70,6 @@ Under low texture environment, the ARKit may not pick up any features, or pick u
 Under 50Hz light source, it has the flickering cube issue.
 
 
-## Comming Soon
+## Coming Soon
 
 Native Unity Plugin version may be in order, if find enough time..
